@@ -27,6 +27,9 @@ public_key_file   = "__PUBLIC_KEY_FILE__"
 ocp_master_node_count = "3"
 ocp_worker_node_count = "3"
 
+repo_user = "__REPO_USER__"
+repo_token = "__REPO_TOKEN__"
+
 skip_icp_install = true
 skip_icp_setup = true
 skip_icp_config = true
