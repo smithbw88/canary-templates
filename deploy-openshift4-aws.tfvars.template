@@ -1,0 +1,31 @@
+# W3 Username - used to tag almost all created resources
+user_name         = "__OWNER_NAME__"    # Used in tagging ownership of AWS resources
+
+#--- Credentials ---
+
+# Access key/secret key for acccess to AWS:
+aws_access_key         = "__AWS_ACCESS_KEY__"
+aws_secret_access_key  = "__AWS_SECRET_ACCESS_KEY__"
+
+# Username/password for RH Customer Portal login with access to RHEL subscriptions
+rh_subscription_username = "__RH_SUBSCRIPTION_USERNAME__"
+rh_subscription_password = "__RH_SUBSCRIPTION_PASSWORD__"
+
+
+# Pull secret allowing access to OCP installer
+ocp_pull_secret_file  = "__OCP__PULL_SECRET_FILE__"
+ocp_installer_version = "__OCP_INSTALLER_VERSION__"
+
+# Base domain from which the cluster domain is a subdomain. (Default shown)
+base_dns_domain = "__BASE_DNS_DOMAIN__"
+
+# SSH pub/private key-pair for accessing created AWS instances
+private_key_file  = "__PRIVATE_KEY_FILE__"
+public_key_file   = "__PUBLIC_KEY_FILE__"
+
+ocp_master_node_count = "3"
+ocp_worker_node_count = "3"
+
+skip_icp_install = true
+skip_icp_setup = true
+skip_icp_config = true
