@@ -101,7 +101,7 @@ worker_memory_size = 32768
 
 # === ICP Install ===
 
-repo_user = "__REPO_USER__"
+repo_username = "__REPO_USER__"
 repo_token = "__REPO_TOKEN__"
 
 skip_icp_install = true

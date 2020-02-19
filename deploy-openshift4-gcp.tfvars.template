@@ -29,7 +29,7 @@ icp_master_node_count = "3"
 
 # -- ICP Install --
 
-repo_user = "__REPO_USER__"
+repo_username = "__REPO_USER__"
 repo_token = "__REPO_TOKEN__"
 
 skip_icp_install = true
