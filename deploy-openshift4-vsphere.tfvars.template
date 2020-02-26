@@ -101,6 +101,7 @@ worker_memory_size = 32768
 ocm_registry_username = "__QUAY_USER__"
 ocm_registry_password = "__QUAY_TOKEN__"
 ocm_image_suffix = "__SNAPSHOT__"
+ocm_namespace = "__NAMESPACE__"
 
 skip_ocm_setup = false
 skip_ocm_install = false
