@@ -1,7 +1,4 @@
-# W3 Username - used to tag almost all created resources
 owner_name         = "__OWNER_NAME__"    # Used in tagging ownership of GCP resources
-
-#--- Credentials ---
 
 gcp_project_id = "__GCP_PROJECT_ID__"
 gcp_key_file = "__GCP_KEY_PATH__"
@@ -27,11 +24,14 @@ ocp_master_node_count = "3"
 ocp_worker_node_count = "3"
 icp_master_node_count = "3"
 
-# -- ICP Install --
+ocm_registry_username = "__QUAY_USER__"
+ocm_registry_password = "__QUAY_TOKEN__"
+ocm_image_suffix = "__SNAPSHOT__"
 
-repo_username = "__REPO_USER__"
-repo_token = "__REPO_TOKEN__"
+skip_ocm_setup = false
+skip_ocm_install = false
 
 skip_icp_install = true
 skip_icp_setup = true
 skip_icp_config = true
+

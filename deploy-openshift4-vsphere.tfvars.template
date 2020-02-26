@@ -98,11 +98,12 @@ worker_memory_size = 32768
 #skip_ocp_config = true
 #skip_ocp_install = true
 
+ocm_registry_username = "__QUAY_USER__"
+ocm_registry_password = "__QUAY_TOKEN__"
+ocm_image_suffix = "__SNAPSHOT__"
 
-# === ICP Install ===
-
-repo_username = "__REPO_USER__"
-repo_token = "__REPO_TOKEN__"
+skip_ocm_setup = false
+skip_ocm_install = false
 
 skip_icp_install = true
 skip_icp_setup = true
