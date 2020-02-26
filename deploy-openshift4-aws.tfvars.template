@@ -27,7 +27,7 @@ ocp_master_node_count = "3"
 ocp_worker_node_count = "3"
 
 ocm_registry_username = "__QUAY_USER__"
-ocm_registry_password = "__QUAY_TOKEN"
+ocm_registry_password = "__QUAY_TOKEN__"
 ocm_image_suffix = "__SNAPSHOT__"
 
 skip_ocm_setup = false
