@@ -1,111 +1,130 @@
+# VSphere
 
-# === OCP Install ===
+# IP Addrs:
+#   Subnet:    139.178.67.96/28
+#   Gateway:   139.178.67.97
+#   Netmask:   255.255.255.240
+#   Avail:     .99 to .110
+#   DNS:       8.8.8.8 (Google)
+#
+#   KEG:       139.178.67.100
 
-#--- General ---
+# Name to give to the cluster to create.
+cluster_name = "canary-i2e"
+base_dns_domain = "aws.red-chesterfield.com"
 
-# Name of cluster.  Will be generated if not set.
-cluster_name = "travcan-ocp4-vsphere"
+# Version of OCP to install
+ocp_installer_version = "latest-4.3"
+vm_coreos_template_name="rhcos-4.3.0"
 
-# Base domain from which the cluster domain is a subdomain. (Default shown)
-base_dns_domain = "yellow-chesterfield.com"
+ocp_master_node_count = 3
+ocp_worker_node_count = 3
 
-# W3 id of cluster creator/owner.  Used for tagging/tracking of resources.
-owner_name = "__W3_EMAIL__"
+skip_ocm_setup = false
+skip_ocm_install = false
 
-# Version of OCP 4.x to install.
-ocp_installer_version = "__OCP_INSTALLER_VERSION__"
+# Used for tagging/tracking of resources.
+owner_name = "gbuchana@redhat.com"
 
-
-#--- Credentials for OCP Install ---
+#--- Credentials ---
 
 # User name/passwordon the VCenter server
-vcenter_user    = "__VCENTER_USER__"
+vcenter_user     = "__VCENTER_USER__"
 vcenter_password = "__VCENTER_PASSWORD__"
 
-# Access key/secret key for acccess to AWS (used for DNS records):
-aws_access_key        = "__AWS_ACCESS_KEY__"
-aws_secret_access_key = "__AWS_SECRET_ACCESS_KEY__"
+# Access key/secret key for acccess to AWS:
+aws_access_key         = "__AWS_ACCESS_KEY__"
+aws_secret_access_key  = "__AWS_SECRET_ACCESS_KEY__"
 
-# Pull secret allowing access to OCP content from quay.io:
+# Username/password for RH Customer Portal login with access to RHEL subscriptions
+rh_subscription_username = "__RH_SUBSCRIPTION_USERNAME__"
+rh_subscription_password = "__RH_SUBSCRIPTION_PASSWORD__"
+
+# Pull secret allowing access to OCP installer
 ocp_pull_secret_file  = "__OCP__PULL_SECRET_FILE__"
 
 # SSH pub/private key-pair for accessing created AWS instances
-private_key_file = "id_rsa"
-public_key_file  = "id_rsa.pub"
-
-rh_subscription_password = "__RH_SUBSCRIPTION_PASSWORD__"
-rh_subscription_username = "__RH_SUBSCRIPTION_USERNAME__"
-
-#--- VCener Properties ---
-
-# Hostname of the vCenter server managing the vSphere cluster.
-vcenter_server = "cicd-vc4.rtp.raleigh.ibm.com"
-
-# Name of the vSphere datacenter.
-vsphere_datacenter_name = "CICD-Plot12"
-
-# Name of the vSphere cluster within the datacenter.
-vsphere_cluster_name = "Plot12-Cluster"
-
-# Name of the vSphere data store to use for the VMs.
-vsphere_datastore_name = "Plot12-DS"
-
-# Name of the RedHat CoreOS VM template to clone to create VMs for the cluster.
-# The template named "rhcos-4.1.0 represnts the OCP 4.1 GA version of RHCOS.
-vm_coreos_template_name = "rhcos-4.3.0"
-vm_keg_template_name = "Base-RHEL-8-KEG-2020-01-13"
-
-# The name of the vSphere network providing intranet (9.x) (and thus internet)
-# access.  (Internet access is necessary since the install pulls from quay.io)
-vm_network_name = "publicPG-plot12"
-
-
-# --- Virtual Machine Properties ---
-
-use_private_internal_network = true
-private_network_dvs_name     = "privateDvSwitch-plot12"
-private_network_vlan_number  = 1200
-use_load_balancer = true
-use_private_dns_server = true
-
-# The machine_CIDR block where IP addresses will be assigned for cluster nodes.
-# Deprecated: machine_cidr = "9.42.136.0/24"
-external_network_cidr = "9.42.136.0/24"
-external_gateway_ip   = "9.42.136.1"
-
-# Characteristics of the Edge Gateway (KEG) VM (always only one)
-# Deprecated name: keg_ip = "9.42.136.60"
-keg_external_ip = "9.42.136.240"
-
-ocp_master_node_count  = 3
-
-# Characteristics of OCP worker (aka compute) VMs to create.
-
-ocp_worker_node_count  = 4
-
-# Optional (defaults shown):
-worker_cpu_count   = 8
-worker_memory_size = 32768
-#worker_root_size   = 64
-
-
-#--- Enabling/Disabling Install Steps ---
-
-# Set the following to true to skip the corresponding step.
-# (This is useful when debugging, or when doing setup for a manual install.)
-
-#skip_ocp_setup = true
-#skip_ocp_config = true
-#skip_ocp_install = true
+private_key_file  = "__PRIVATE_KEY_FILE__"
+public_key_file   = "__PUBLIC_KEY_FILE__"
 
 ocm_registry_username = "__QUAY_USER__"
 ocm_registry_password = "__QUAY_TOKEN__"
 ocm_image_suffix = "__SNAPSHOT__"
 ocm_namespace = "__NAMESPACE__"
 
-skip_ocm_setup = false
-skip_ocm_install = false
+#--- End of Credentials ---
 
-skip_icp_install = true
-skip_icp_setup = true
-skip_icp_config = true
+#--- VCener Properties ---
+
+# Hostname of the vCenter server managing the vSphere cluster.
+vcenter_server = "cicd-vcsa-01.cicd.red-chesterfield.com"
+
+# Name of the vSphere datacenter.
+vsphere_datacenter_name = "CICD-Plot01"
+
+# Name of the vSphere cluster within the datacenter.
+vsphere_cluster_name = "Plot01-Cluster"
+
+# Name of the vSphere data store to use for the VMs.
+vsphere_datastore_name = "CICD-A-02-DS1"
+
+# Name of the RedHat CoreOS VM template to clone to create VMs for the cluster.
+# The template named "rhcos-4.1.0 represnts the OCP 4.1 GA version of RHCOS.
+#vm_coreos_template_name = "rhcos-4.3.0"
+
+# The name of the vSphere network (port group) providing public (outside the cluster) access.
+# This network needds to provide access to the sevrer hosting the boostrrap ignition config.
+external_network_name = "Public Network"
+
+# The name of the VLAN-enabled vSphere distributed virtual switch providing internal
+# connectivity between the nodes of the cluster, and the VLAN number to use for
+# this cluster.  The TF config will create a cluster-specific port group on the
+# DVS, to be tagged with the given VLAN,  and attach all clsuter nodes to that
+# port group.  The KEG will be dual homed, with an interface attached to the
+# cluster specific port group and another attached to the ${external_network_name}
+# port group.
+
+private_network_dvs_name     = "Plot01 Cluster Networks DVSwitch"
+private_network_vlan_number  = 902
+use_private_internal_network = true
+
+# --- Virtual Machine Properties ---
+
+# Variables for characteristics of bootstrap/control plane/worker nodes:
+# - External IP address of the KEG (otehr addresses are auto assigned)
+# - Number to master/worker VMs create (note: always a single bootstrap node)
+# - Optional: VM CPU count, memory size and disk size
+
+# The CIDR notation describing external network, and its gateway IP address.
+external_network_cidr = "139.178.67.96/28"
+external_gateway_ip   = "139.178.67.97"
+
+# Characteristics of the Edge Gateway (KEG) VM (always only one)
+keg_external_ip = "139.178.67.100"
+
+# DNS server to use:
+dns_ip = "8.8.8.8"
+
+# Characteristics of bootstrap VM to create (always only one)
+
+# Optional (defaults shown):
+bootstrap_cpu_count   = 2
+bootstrap_memory_size = 8192
+bootstrap_root_size   = 16
+
+# Characteristics of OCP master (aka control plane) VMs to create.
+
+# A production OCP cluster would probably deploy 3 instances.  But you can
+# deploy as few as 1 and that probably works well enough for most dev/test needs.
+
+# Optional (defaults shown):
+# master_cpu_count   = 4
+# master_memory_size = 16384
+master_root_size   = 16
+
+# Characteristics of OCP worker (aka compute) VMs to create.
+
+# Optional (defaults shown):
+# worker_cpu_count   = 4
+# worker_memory_size = 16384
+worker_root_size   = 32
