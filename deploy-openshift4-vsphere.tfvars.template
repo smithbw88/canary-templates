@@ -7,7 +7,7 @@
 #   Avail:     .99 to .110
 #   DNS:       8.8.8.8 (Google)
 #
-#   KEG:       139.178.67.100
+#   KEG:       139.178.67.101
 
 # Name to give to the cluster to create.
 cluster_name = "canary-i2e"
@@ -100,7 +100,7 @@ external_network_cidr = "139.178.67.96/28"
 external_gateway_ip   = "139.178.67.97"
 
 # Characteristics of the Edge Gateway (KEG) VM (always only one)
-keg_external_ip = "139.178.67.100"
+keg_external_ip = "139.178.67.101"
 
 # DNS server to use:
 dns_ip = "8.8.8.8"
