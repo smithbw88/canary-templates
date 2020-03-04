@@ -85,7 +85,7 @@ external_network_name = "Public Network"
 # port group.
 
 private_network_dvs_name     = "Plot01 Cluster Networks DVSwitch"
-private_network_vlan_number  = 902
+private_network_vlan_number  = 901
 use_private_internal_network = true
 
 # --- Virtual Machine Properties ---
